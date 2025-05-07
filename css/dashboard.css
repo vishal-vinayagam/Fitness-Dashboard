@@ -1,0 +1,221 @@
+/* User Stats Widget */
+.user-stats .widget-body {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.stat-item {
+    flex: 1;
+    padding: 10px;
+}
+
+.stat-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--medium-gray);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.stat-title {
+    font-size: 0.8rem;
+    color: var(--medium-gray);
+    display: block;
+}
+
+.edit-btn {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme .edit-btn {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.edit-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme .edit-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Today's Workout Widget */
+.today-workout .widget-body {
+    padding: 0;
+}
+
+.workout-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.dark-theme .workout-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.workout-item:last-child {
+    border-bottom: none;
+}
+
+.workout-item:hover {
+    background-color: var(--light-gray);
+}
+
+.workout-icon {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.dark-theme .workout-icon {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.workout-details h4 {
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+}
+
+.workout-details p {
+    font-size: 0.8rem;
+    color: var(--medium-gray);
+}
+
+.start-btn {
+    margin-left: auto;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.start-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* Progress Chart Widget */
+.progress-chart .widget-body {
+    padding: 10px;
+    height: 200px;
+}
+
+.time-filter {
+    display: flex;
+    gap: 5px;
+}
+
+.time-filter button {
+    background: none;
+    border: none;
+    padding: 3px 8px;
+    font-size: 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--medium-gray);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme .time-filter button {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.time-filter button.active {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.dark-theme .time-filter button.active {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.time-filter button:hover:not(.active) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.dark-theme .time-filter button:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Activity Summary Widget */
+.activity-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: var(--primary-color);
+    background-color: rgba(0, 0, 0, 0.05);
+    font-size: 1.1rem;
+}
+
+.dark-theme .activity-icon {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.activity-details h4 {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.activity-details p {
+    font-size: 0.8rem;
+    color: var(--medium-gray);
+}
+
+.activity-progress {
+    flex: 1;
+    margin-left: 15px;
+    height: 6px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.dark-theme .activity-progress {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 3px;
+    background-color: var(--primary-color);
+}

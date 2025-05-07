@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack | Fitness Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="light-theme">
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="images/logo.png" alt="FitTrack">
+                <h2>Fit<span>Track</span></h2>
+            </div>
+            
+            <!-- Auth Section -->
+            <div class="auth-section" id="authSection">
+                <div class="auth-toggle" id="authToggle">
+                    <button class="active" data-tab="login">Login</button>
+                    <button data-tab="signup">Sign Up</button>
+                </div>
+                
+                <form id="loginForm" class="auth-form active">
+                    <div class="form-group">
+                        <input type="email" id="loginEmail" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="auth-btn">Login</button>
+                </form>
+                
+                <form id="signupForm" class="auth-form">
+                    <div class="form-group">
+                        <input type="text" id="signupName" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="signupEmail" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="signupPassword" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
+                    </div>
+                    <button type="submit" class="auth-btn signup-btn">Sign Up</button>
+                </form>
+            </div>
+            
+            <!-- Main Navigation -->
+            <nav id="mainNav" style="display: none;">
+                <ul>
+                    <li class="active" data-section="dashboard"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li data-section="workouts"><a href="#"><i class="fas fa-dumbbell"></i> Workouts</a></li>
+                    <li data-section="progress"><a href="#"><i class="fas fa-chart-line"></i> Progress</a></li>
+                    <li data-section="nutrition"><a href="#"><i class="fas fa-utensils"></i> Nutrition</a></li>
+                    <li data-section="settings"><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+            
+            <!-- User Profile -->
+            <div class="user-profile" id="userProfile" style="display: none;">
+                <div class="profile-dropdown">
+                    <div class="profile-info">
+                        <img src="https://via.placeholder.com/40" alt="User Profile" id="userProfileImage">
+                        <div class="user-info">
+                            <h4 id="userProfileName">John Doe</h4>
+                            <p id="userMembership">Basic Member</p>
+                        </div>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <a href="#" id="editProfileBtn"><i class="fas fa-user-edit"></i> Edit Profile</a>
+                        <a href="#" id="themeToggleBtn"><i class="fas fa-moon"></i> Dark Mode</a>
+                        <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Screen -->
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-content">
+                    <h1>Welcome to FitTrack</h1>
+                    <p>Your personal fitness companion for tracking workouts, nutrition, and health metrics</p>
+                    <button class="cta-btn" id="getStartedBtn">Get Started</button>
+                </div>
+            </div>
+            
+            <!-- Profile Setup -->
+            <div class="profile-setup" id="profileSetup" style="display: none;">
+                <div class="setup-card">
+                    <h2>Complete Your Profile</h2>
+                    <p>We need some information to personalize your experience</p>
+                    
+                    <form id="userInfoForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="userAge">Age</label>
+                                <input type="number" id="userAge" required min="12" max="100">
+                            </div>
+                            <div class="form-group">
+                                <label for="userGender">Gender</label>
+                                <select id="userGender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="userHeight">Height (cm)</label>
+                                <input type="number" id="userHeight" required min="100" max="250">
+                            </div>
+                            <div class="form-group">
+                                <label for="userWeight">Weight (kg)</label>
+                                <input type="number" id="userWeight" required min="30" max="300">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="userGoal">Fitness Goal</label>
+                            <select id="userGoal" required>
+                                <option value="">Select Goal</option>
+                                <option value="weight-loss">Weight Loss</option>
+                                <option value="muscle-gain">Muscle Gain</option>
+                                <option value="maintenance">Maintenance</option>
+                                <option value="endurance">Endurance</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="userActivity">Activity Level</label>
+                            <select id="userActivity" required>
+                                <option value="">Select Activity Level</option>
+                                <option value="sedentary">Sedentary (little or no exercise)</option>
+                                <option value="light">Lightly active (light exercise 1-3 days/week)</option>
+                                <option value="moderate">Moderately active (moderate exercise 3-5 days/week)</option>
+                                <option value="active">Very active (hard exercise 6-7 days/week)</option>
+                                <option value="extreme">Extremely active (very hard exercise & physical job)</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Complete Setup</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Dashboard Content -->
+            <div id="dashboardContent" style="display: none;">
+                <header class="header">
+                    <h1 id="dashboardTitle">Dashboard</h1>
+                    <div class="header-actions">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Search...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="notifications">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">3</span>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Dashboard Sections -->
+                <div class="dashboard-section active" id="dashboardSection">
+                    <div class="dashboard-widgets">
+                        <!-- User Stats Card -->
+                        <div class="widget user-stats">
+                            <div class="widget-header">
+                                <h3>My Stats</h3>
+                                <button class="edit-btn" id="editStatsBtn"><i class="fas fa-edit"></i> Edit</button>
+                            </div>
+                            <div class="widget-body">
+                                <div class="stat-item">
+                                    <span class="stat-value" id="displayHeight">175</span>
+                                    <span class="stat-label">cm</span>
+                                    <span class="stat-title">Height</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value" id="displayWeight">72</span>
+                                    <span class="stat-label">kg</span>
+                                    <span class="stat-title">Weight</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value" id="displayBMI">24</span>
+                                    <span class="stat-label">BMI</span>
+                                    <span class="stat-title" id="bmiCategory">Normal</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Today's Workout -->
+                        <div class="widget today-workout">
+                            <div class="widget-header">
+                                <h3>Recommended Workout</h3>
+                                <button class="view-all"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                            <div class="widget-body">
+                                <div class="workout-item">
+                                    <div class="workout-icon">
+                                        <i class="fas fa-running"></i>
+                                    </div>
+                                    <div class="workout-details">
+                                        <h4 id="recommendedWorkout">Cardio Blast</h4>
+                                        <p id="workoutDetails">30 min | <span id="caloriesEstimate">350</span> kcal</p>
+                                    </div>
+                                    <button class="start-btn">Start</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Progress Chart -->
+                        <div class="widget progress-chart">
+                            <div class="widget-header">
+                                <h3>Weight Progress</h3>
+                                <div class="time-filter">
+                                    <button class="active" data-period="1M">1M</button>
+                                    <button data-period="3M">3M</button>
+                                    <button data-period="6M">6M</button>
+                                    <button data-period="1Y">1Y</button>
+                                </div>
+                            </div>
+                            <div class="widget-body">
+                                <canvas id="weightChart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Health Summary -->
+                        <div class="widget activity-summary">
+                            <div class="widget-header">
+                                <h3>Health Summary</h3>
+                                <button class="view-all"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                            <div class="widget-body">
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-fire"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <h4>Daily Calories</h4>
+                                        <p id="dailyCalories">2,100 kcal</p>
+                                    </div>
+                                    <div class="activity-progress">
+                                        <div class="progress-bar" style="width: 65%"></div>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-weight"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <h4>Target Weight</h4>
+                                        <p id="targetWeight">68 kg</p>
+                                    </div>
+                                    <div class="activity-progress">
+                                        <div class="progress-bar" style="width: 45%"></div>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-heartbeat"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <h4>Heart Rate</h4>
+                                        <p id="heartRate">72 bpm</p>
+                                    </div>
+                                    <div class="activity-progress">
+                                        <div class="progress-bar" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Workouts Section -->
+                <div class="dashboard-section" id="workoutsSection" style="display: none;">
+                    <div class="workouts-container">
+                        <h2>Your Workout Plans</h2>
+                        <div class="workout-cards" id="workoutCards">
+                            <!-- Workout cards will be generated here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Progress Section -->
+                <div class="dashboard-section" id="progressSection" style="display: none;">
+                    <div class="progress-container">
+                        <div class="progress-charts">
+                            <div class="chart-container">
+                                <h3>Weight Trend</h3>
+                                <canvas id="progressWeightChart"></canvas>
+                            </div>
+                            <div class="chart-container">
+                                <h3>Activity Level</h3>
+                                <canvas id="activityChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Nutrition Section -->
+                <div class="dashboard-section" id="nutritionSection" style="display: none;">
+                    <div class="nutrition-container">
+                        <h2>Nutrition Planner</h2>
+                        <div class="nutrition-summary">
+                            <div class="nutrition-card">
+                                <h3>Daily Macros</h3>
+                                <div class="macros-grid" id="macrosGrid">
+                                    <!-- Macro data will be generated here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Settings Section -->
+                <div class="dashboard-section" id="settingsSection" style="display: none;">
+                    <div class="settings-container">
+                        <h2>Account Settings</h2>
+                        
+                        <div class="settings-tabs">
+                            <div class="tab-buttons">
+                                <button class="active" data-tab="profile">Profile</button>
+                                <button data-tab="preferences">Preferences</button>
+                                <button data-tab="security">Security</button>
+                            </div>
+                            
+                            <div class="tab-content active" id="profileTab">
+                                <form id="profileSettingsForm">
+                                    <div class="form-group">
+                                        <label for="settingsName">Full Name</label>
+                                        <input type="text" id="settingsName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="settingsEmail">Email</label>
+                                        <input type="email" id="settingsEmail" required>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="settingsAge">Age</label>
+                                            <input type="number" id="settingsAge" min="12" max="100" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="settingsGender">Gender</label>
+                                            <select id="settingsGender" required>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="submit-btn">Update Profile</button>
+                                </form>
+                            </div>
+                            
+                            <div class="tab-content" id="preferencesTab">
+                                <form id="preferencesForm">
+                                    <div class="form-group">
+                                        <label>Theme</label>
+                                        <div class="theme-options">
+                                            <label class="theme-option">
+                                                <input type="radio" name="theme" value="light" checked>
+                                                <span>Light Mode</span>
+                                            </label>
+                                            <label class="theme-option">
+                                                <input type="radio" name="theme" value="dark">
+                                                <span>Dark Mode</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="measurementSystem">Measurement System</label>
+                                        <select id="measurementSystem">
+                                            <option value="metric">Metric (kg, cm)</option>
+                                            <option value="imperial">Imperial (lbs, in)</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="submit-btn">Save Preferences</button>
+                                </form>
+                            </div>
+                            
+                            <div class="tab-content" id="securityTab">
+                                <form id="securityForm">
+                                    <div class="form-group">
+                                        <label for="currentPassword">Current Password</label>
+                                        <input type="password" id="currentPassword" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="newPassword">New Password</label>
+                                        <input type="password" id="newPassword" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="confirmNewPassword">Confirm New Password</label>
+                                        <input type="password" id="confirmNewPassword" required>
+                                    </div>
+                                    <button type="submit" class="submit-btn">Change Password</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
