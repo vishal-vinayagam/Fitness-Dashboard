@@ -1,1 +1,3 @@
-# Fitness-Dashboard - https://vishal-vinayagam.github.io/Fitness-Dashboard/
+# Fitness-Dashboard
+Live-https://vishal-vinayagam.github.io/Fitness-Dashboard/
+An interactive fitness dashboard.
